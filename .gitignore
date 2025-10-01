@@ -1,0 +1,32 @@
+
+# Node modules (dependencies)
+server/node_modules/
+client/node_modules/
+# Environment variables
+server/.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.swp
+
+# Build artifacts (if any)
+dist/
+build/
+
+# Coverage reports (if using testing tools)
+coverage/
+
+# MongoDB dump files (if any)
+dump/
