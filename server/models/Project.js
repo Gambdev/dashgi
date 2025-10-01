@@ -6,6 +6,7 @@ const projectSchema = new mongoose.Schema({
     startDate: { type: Date, required: true },
     endDate: { type: Date, required: true },
     team: { type: mongoose.Schema.Types.ObjectId, ref: 'Team' },
+    sprints: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Sprint' }],
     status: { type: String, enum: ['Not Started', 'In Progress', 'Completed'], default: 'Not Started' }
 }, { timestamps: true });
 
