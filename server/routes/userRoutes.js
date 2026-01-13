@@ -5,6 +5,8 @@ import {
     getUserById,
     updateUser,
     deleteUser,
+    assignRoleToUser,
+    removeRoleFromUser
 } from '../controllers/userController.js';
 
 const router = express.Router();
@@ -18,4 +20,10 @@ router.route('/:id')
     .put(updateUser) // Update user by ID PUT /api/users/:id
     .delete(deleteUser); // Delete user by ID DELETE /api/users/:id
 
+
+router.route('/:id/roles')
+    .post(assignRoleToUser) // Assign role to user POST /api/users/:id/roles
+
+router.route('/:id/roles/:roleId')
+    .delete(removeRoleFromUser) // Remove role from user DELETE /api/users/:id/roles/:roleId
 export default router;
