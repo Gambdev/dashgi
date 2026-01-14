@@ -6,10 +6,20 @@ import {
     updateUser,
     deleteUser,
     assignRoleToUser,
-    removeRoleFromUser
+    removeRoleFromUser,
+    registerUser,
+    loginUser
 } from '../controllers/userController.js';
 
 const router = express.Router();
+
+
+router.post('/register', registerUser); // User registration POST /api/users/register
+
+router.post('/login', loginUser); // User login POST /api/users/login
+
+
+router.use(protect); // Apply authentication middleware to all routes below
 
 router.route('/')
     .get(getUsers) // Get all users /api/users

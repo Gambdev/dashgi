@@ -7,6 +7,9 @@ import userRoutes from './routes/userRoutes.js';
 import teamRoutes from './routes/teamRoutes.js';
 import projectRoutes from './routes/projectRoutes.js';
 import sprintRoutes from './routes/sprintRoutes.js';
+import roleRoutes from './routes/roleRoutes.js';
+import taskRoutes from './routes/taskRoutes.js';
+import dailyRoutes from './routes/dailyRoutes.js';
 
 dotenv.config();
 const app= express();
@@ -36,6 +39,9 @@ app.use('/api/users', userRoutes);
 app.use('/api/teams', teamRoutes);
 app.use('/api/projects', projectRoutes);
 app.use('/api/sprints', sprintRoutes);
+app.use('/api/roles', roleRoutes);
+app.use('/api/tasks', taskRoutes);
+app.use('/api/dailies', dailyRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`)

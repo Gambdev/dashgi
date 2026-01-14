@@ -7,8 +7,10 @@ import { getProjects,
     assignProjectToTeam,
     assignSprintToProject
  } from "../controllers/projectController.js";
-
+import { protect } from "../middleware/authMiddleware.js";
 const router = express.Router();
+
+router.use(protect); // Apply authentication middleware to all routes below
 
 router.route('/')
     .get(getProjects)

@@ -6,3 +6,5 @@ const dailySchema = new mongoose.Schema({
     team: { type: mongoose.Schema.Types.ObjectId, ref: 'Team' }, // Reference to the Team model
     attendees: [{type: mongoose.Schema.Types.ObjectId, ref: 'User' }], // Array of references to User model}
 }, { timestamps: true });
+
+export default mongoose.model('Daily', dailySchema);

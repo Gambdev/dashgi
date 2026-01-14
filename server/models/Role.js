@@ -1,9 +1,9 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
-const RoleSchema = new mongoose.Schema({
-  name: { type: String, required: true, unique: true },
-  description: { type: String },
-  permissions: [{ type: String }] // keep as simple strings; change to refs if you prefer a Permission model
+const roleSchema = new mongoose.Schema({
+    name: { type: String, required: true },
+    description: { type: String },
+    permissions: [{ type: String }] // keep as simple strings; change to refs if you prefer a Permission model
 }, { timestamps: true });
 
-module.exports = mongoose.model('Role', RoleSchema);
+export default mongoose.model('Role', roleSchema);

@@ -7,9 +7,12 @@ import { createTask,
     assignTaskToUser,
     assignTaskToSprint
 } from '../controllers/taskController.js';  
+import { protect } from "../middleware/authMiddleware.js";
+
 
 const router = express.Router();
 
+router.use(protect); // Apply authentication middleware to all routes below
 router.route('/')
     .post(createTask)
     .get(getTasks);
