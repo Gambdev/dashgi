@@ -27,3 +27,5 @@ router.route('/assign/user/:taskId/:userId')
 
 router.route('/assign/sprint/:taskId/:sprintId')
     .put(assignTaskToSprint);
+
+export default router;

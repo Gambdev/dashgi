@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 export const protect = (req, res, next) => {
   const authHeader = req.headers.authorization;
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    return res.status(401).json({ message: 'No autorizado, token faltante' });
+    return res.status(401).json({ message: 'Not Authorized, token missing' });
   }
 
   const token = authHeader.split(' ')[1];
@@ -12,6 +12,6 @@ export const protect = (req, res, next) => {
     req.user = decoded; // Puedes usar req.user.id en tus controladores
     next();
   } catch (error) {
-    res.status(401).json({ message: 'Token inválido' });
+    res.status(401).json({ message: 'Invalid token' });
   }
 };
