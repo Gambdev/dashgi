@@ -95,6 +95,52 @@ export default function ProjectsPage() {
         >
             {showForm ? "Cancel" : "Create Project"}
         </button>
+        
+      {loading && <p>Loading...</p>}
+      {error && <p className="text-red-500">{error}</p>}
+      <table className="w-full bg-white rounded shadow mt-4">
+        <thead>
+            <tr className="bg-gray-100">
+            <th className="py-2 px-4 text-left">Name</th>
+            <th className="py-2 px-4 text-left">Status</th>
+            <th className="py-2 px-4 text-left">Start Date</th>
+            <th className="py-2 px-4 text-left">End Date</th>
+            <th className="py-2 px-4 text-left">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {projects.map(project => (
+            <tr key={project._id} className="border-b">
+                <td className="py-2 px-4">{project.name}</td>
+                <td className="py-2 px-4">{project.status}</td>
+                <td className="py-2 px-4">{project.startDate ? new Date(project.startDate).toLocaleDateString() : "-"}</td>
+                <td className="py-2 px-4">{project.endDate ? new Date(project.endDate).toLocaleDateString() : "-"}</td>
+                <td className="py-2 px-4 flex gap-2">
+                <button
+                className="bg-yellow-500 text-white px-2 py-1 rounded text-sm"
+                onClick={() => {
+                    setEditProject(project);
+                    setEditForm({
+                    name: project.name,
+                    description: project.description,
+                    status: project.status,
+                    startDate: project.startDate ? new Date(project.startDate).toISOString().split("T")[0] : "",
+                    endDate: project.endDate ? new Date(project.endDate).toISOString().split("T")[0] : "",
+                    });
+                }}
+                >
+                Edit
+                </button>
+                <button className="bg-red-500 text-white px-2 py-1 rounded text-sm" 
+                onClick={() => handleDelete(project._id)}>Delete</button>
+                </td>
+            </tr>
+            ))}
+        </tbody>
+        </table>
+
+
+        {/* //MODAL PARA CREAR PROYECTO */}
         <Modal open={showForm} onClose={() => setShowForm(false)}>
             <form onSubmit={handleCreate} className="mb-6 bg-white p-4 rounded shadow flex flex-col gap-2">
             <h3 className="text-lg font-bold mb-2">Create Project</h3>
@@ -154,48 +200,10 @@ export default function ProjectsPage() {
               </button>
               </form>
         </Modal>
-      {loading && <p>Loading...</p>}
-      {error && <p className="text-red-500">{error}</p>}
-      <table className="w-full bg-white rounded shadow mt-4">
-        <thead>
-            <tr className="bg-gray-100">
-            <th className="py-2 px-4 text-left">Name</th>
-            <th className="py-2 px-4 text-left">Status</th>
-            <th className="py-2 px-4 text-left">Start Date</th>
-            <th className="py-2 px-4 text-left">End Date</th>
-            <th className="py-2 px-4 text-left">Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {projects.map(project => (
-            <tr key={project._id} className="border-b">
-                <td className="py-2 px-4">{project.name}</td>
-                <td className="py-2 px-4">{project.status}</td>
-                <td className="py-2 px-4">{project.startDate ? new Date(project.startDate).toLocaleDateString() : "-"}</td>
-                <td className="py-2 px-4">{project.endDate ? new Date(project.endDate).toLocaleDateString() : "-"}</td>
-                <td className="py-2 px-4 flex gap-2">
-                <button
-                className="bg-yellow-500 text-white px-2 py-1 rounded text-sm"
-                onClick={() => {
-                    setEditProject(project);
-                    setEditForm({
-                    name: project.name,
-                    description: project.description,
-                    status: project.status,
-                    startDate: project.startDate ? new Date(project.startDate).toISOString().split("T")[0] : "",
-                    endDate: project.endDate ? new Date(project.endDate).toISOString().split("T")[0] : "",
-                    });
-                }}
-                >
-                Edit
-                </button>
-                <button className="bg-red-500 text-white px-2 py-1 rounded text-sm" 
-                onClick={() => handleDelete(project._id)}>Delete</button>
-                </td>
-            </tr>
-            ))}
-        </tbody>
-        </table>
+
+
+
+            {/* MODAL PARA EDITAR PROYECTO */}
         <Modal open={!!editProject} onClose={() => setEditProject(null)}>
             <form
                 onSubmit={async e => {
@@ -226,6 +234,8 @@ export default function ProjectsPage() {
                 }}
                 className="flex flex-col gap-4"
             >
+                <h3 className="text-lg font-bold mb-2">Edit Project</h3>
+
                 <label htmlFor="edit-name" className="font-semibold">Project Name:</label>
                 <input
                 id="edit-name"

@@ -7,6 +7,7 @@ export default function Sidebar() {
       <nav className="flex flex-col gap-2 p-4">
         <Link to="/dashboard" className="hover:bg-gray-700 rounded px-3 py-2">Dashboard</Link>
         <Link to="/projects" className="hover:bg-gray-700 rounded px-3 py-2">Projects</Link>
+        <Link to="/sprints" className="hover:bg-gray-700 rounded px-3 py-2">Sprints</Link>
         <Link to="/teams" className="hover:bg-gray-700 rounded px-3 py-2">Teams</Link>
         {/* Agrega más enlaces según tus módulos */}
       </nav>

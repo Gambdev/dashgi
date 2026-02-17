@@ -2,10 +2,11 @@ import Sprint from "../models/Sprint.js";
 
 export const createSprint = async (req, res) => {
     try {
-        const sprint = new Sprint(req.body);
+        const { projectId } = req.params;
+        const sprint = new Sprint({ ...req.body, project: projectId });
         await sprint.save();
         res.status(201).json(sprint);
-    }catch (error) {
+    } catch (error) {
         res.status(400).json({ message: error.message });
     }
 };

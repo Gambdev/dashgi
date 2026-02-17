@@ -14,7 +14,6 @@ const router = express.Router();
 router.use(protect); // Apply authentication middleware to all routes below
 
 router.route('/')
-    .post(createSprint)
     .get(getSprints);
 
 router.route('/:id')
@@ -23,7 +22,8 @@ router.route('/:id')
     .delete(deleteSprint);
 
 router.route('/project/:projectId')
-    .get(getSprintsByProject);
+    .get(getSprintsByProject)
+    .post(createSprint); // Create sprint for specific project
 
 
 export default router;

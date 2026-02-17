@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginPage from "./components/pages/LoginPage";
 import DashboardPage from "./components/pages/DashboardPage";
 import ProjectsPage from './components/pages/ProjectsPage';
+import SprintsPage from './components/pages/SprintsPage';
+
 
 import './App.css'
 
@@ -14,6 +16,8 @@ function App() {
         <Route path="/projects" element={<ProjectsPage />} />
 
         <Route path="/dashboard" element={<DashboardPage />} />
+
+        <Route path="/sprints" element={<SprintsPage />} />
         <Route path="*" element={<LoginPage />} /> {/* Redirige cualquier ruta desconocida al login */}
       </Routes>
     </BrowserRouter>
