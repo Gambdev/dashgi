@@ -9,6 +9,7 @@ export default function Sidebar() {
         <Link to="/projects" className="hover:bg-gray-700 rounded px-3 py-2">Projects</Link>
         <Link to="/sprints" className="hover:bg-gray-700 rounded px-3 py-2">Sprints</Link>
         <Link to="/teams" className="hover:bg-gray-700 rounded px-3 py-2">Teams</Link>
+        <Link to="/tasks" className="hover:bg-gray-700 rounded px-3 py-2">Tasks</Link>
         {/* Agrega más enlaces según tus módulos */}
       </nav>
     </aside>

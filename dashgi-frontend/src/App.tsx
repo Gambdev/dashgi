@@ -3,7 +3,7 @@ import LoginPage from "./components/pages/LoginPage";
 import DashboardPage from "./components/pages/DashboardPage";
 import ProjectsPage from './components/pages/ProjectsPage';
 import SprintsPage from './components/pages/SprintsPage';
-
+import TasksPage from './components/pages/TasksPage';
 
 import './App.css'
 
@@ -18,6 +18,8 @@ function App() {
         <Route path="/dashboard" element={<DashboardPage />} />
 
         <Route path="/sprints" element={<SprintsPage />} />
+
+        <Route path="/tasks" element={<TasksPage />} />
         <Route path="*" element={<LoginPage />} /> {/* Redirige cualquier ruta desconocida al login */}
       </Routes>
     </BrowserRouter>
